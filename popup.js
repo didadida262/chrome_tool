@@ -7,16 +7,19 @@ let changeColor = document.getElementById("changeColor");
 
 // When the button is clicked, inject setPageBackgroundColor into current page
 changeColor.addEventListener("click", async () => {
-  console.log('click---1')
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  console.log('tab>>>', tab)
-  let video = document.getElementsByTagName('video')
-  console.log('video>>>', video)
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    files: ['script.js']
-    // function: setPageBackgroundColor,
-  });
+  chrome.scripting.executeScript(
+    {
+      target: { tabId: tab.id },
+      function: downloadVideo,
+    },
+    () => {
+      console.log('wo ni ma')
+      let video = document.getElementsByTagName('video')
+      console.log('video2>>>', video)
+
+    }
+  );
 });
 // changeColor.addEventListener("click", async () => {
 //   console.log('click')
