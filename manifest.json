@@ -1,10 +1,16 @@
 {
   "name": "Ta-da",
-  "description": "download_zhihu_short_video",
+  "description": "zhihu_small_video_down",
   "version": "1.0",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": ["storage", "activeTab", "scripting"]
-}  
+  "permissions": ["storage", "activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "128": "/images/icon.png"
+  }
+} 
