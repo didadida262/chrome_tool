@@ -1,0 +1,10 @@
+{
+  "name": "Ta-da",
+  "description": "download_zhihu_short_video",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "activeTab", "scripting"]
+}  
