@@ -29,15 +29,36 @@ changeColor.addEventListener("click", async () => {
 //     function: downloadVideo,
 //   })
 // })
+function getVideoTitle() {
+  let titleDom = document.getElementsByClassName('title')[0]
+  console('titleDom>>', titleDom)
+}
 
 function downloadVideo() {
   console.log('downloadVideo')
-  let video = document.getElementsByTagName('video')[0]
-  console.log('video>>>', video)
-  const url = video.src
+  let targetDom = document.getElementsByTagName('xg-video-container')[0]
+  const videoDom = targetDom.childNodes[0]
+  console.log('videoDom>>>', videoDom)
+  const sourceDom = videoDom.lastChild
+  console.log('sourceDom>>>', sourceDom)
+  const src = sourceDom.src.slice(8)
+  console.log('src>>>', src)
+
+  // const title = getVideoTitle()
+  let titleDom = document.getElementsByClassName('j5WZzJdp IoRNNcMW hVNC9qgC')[0]
+  const title = titleDom.childNodes[0].childNodes[0].childNodes[0].childNodes[0].textContent
+  // console.log('titleDom>>', titleDom)
+  // console.log('title>>', title)
+  // const filename = title + '.mp4'
+  const urlObj = new URL(src)
+  console.log(urlObj)
+
+
+  // const url = video.src
   const aEl = document.createElement('a')
-  aEl.href = url
-  aEl.download = 'test.mp4'
+  aEl.href = src
+  aEl.download = filename
+  aEl.click()
 }
 
 // The body of this function will be execuetd as a content script inside the
