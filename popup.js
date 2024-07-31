@@ -3,13 +3,18 @@
  * @Author: didadida262
  * @Date: 2024-05-29 16:11:47
  * @LastEditors: didadida262
- * @LastEditTime: 2024-07-31 10:56:00
+ * @LastEditTime: 2024-07-31 11:25:40
  */
 // Initialize butotn with users's prefered color
 let changeColor = document.getElementById("changeColor");
 // chrome.storage.sync.get("color", ({ color }) => {
 //   changeColor.style.backgroundColor = color;
 // });
+
+document.addEventListener('DOMContentLoaded', function()
+{
+	console.log('DOMContentLoaded>>>>');
+});
 
 // When the button is clicked, inject setPageBackgroundColor into current page
 changeColor.addEventListener("click", async () => {
