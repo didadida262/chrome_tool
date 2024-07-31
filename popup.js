@@ -1,4 +1,10 @@
-
+/*
+ * @Description: 
+ * @Author: didadida262
+ * @Date: 2024-05-29 16:11:47
+ * @LastEditors: didadida262
+ * @LastEditTime: 2024-07-31 10:56:00
+ */
 // Initialize butotn with users's prefered color
 let changeColor = document.getElementById("changeColor");
 // chrome.storage.sync.get("color", ({ color }) => {
@@ -7,6 +13,7 @@ let changeColor = document.getElementById("changeColor");
 
 // When the button is clicked, inject setPageBackgroundColor into current page
 changeColor.addEventListener("click", async () => {
+  console.log('start download...')
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   chrome.scripting.executeScript(
     {
@@ -15,9 +22,6 @@ changeColor.addEventListener("click", async () => {
     },
     () => {
       console.log('wo ni ma')
-      let video = document.getElementsByTagName('video')
-      console.log('video2>>>', video)
-
     }
   );
 });
@@ -35,30 +39,33 @@ function getVideoTitle() {
 }
 
 function downloadVideo() {
-  console.log('downloadVideo')
+  console.log('扫描地址...')
   let targetDom = document.getElementsByTagName('xg-video-container')[0]
   const videoDom = targetDom.childNodes[0]
-  console.log('videoDom>>>', videoDom)
+  // console.log('videoDom>>>', videoDom)
   const sourceDom = videoDom.lastChild
-  console.log('sourceDom>>>', sourceDom)
+  // console.log('sourceDom>>>', sourceDom)
   const src = sourceDom.src.slice(8)
   console.log('src>>>', src)
 
-  // const title = getVideoTitle()
   let titleDom = document.getElementsByClassName('j5WZzJdp IoRNNcMW hVNC9qgC')[0]
   const title = titleDom.childNodes[0].childNodes[0].childNodes[0].childNodes[0].textContent
-  // console.log('titleDom>>', titleDom)
-  // console.log('title>>', title)
-  // const filename = title + '.mp4'
-  const urlObj = new URL(src)
-  console.log(urlObj)
+  console.log(title)
+  // navigator.clipboard.writeText(title)
+  const filename = title + '.mp4'
+  // const urlObj = new URL(src)
+  // console.log('urlObj>>',urlObj)
 
 
   // const url = video.src
   const aEl = document.createElement('a')
-  aEl.href = src
-  aEl.download = filename
-  aEl.click()
+  // aEl.href = src
+  aEl.setAttribute("href", src)
+  // document.body.appendChild(aEl)
+  // aEl.download = filename
+  // aEl.click()
+  // console.log('aEl>>>>',aEl)
+  // document.body.removeChild(aEl)
 }
 
 // The body of this function will be execuetd as a content script inside the
